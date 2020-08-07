@@ -91,4 +91,3 @@ echo "Starting apache :) \n \n" \n \
 RUN chmod 700 /root/start-apache.sh
 
 CMD ["/root/start-apache.sh"]
-
