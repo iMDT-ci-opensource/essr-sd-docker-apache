@@ -38,29 +38,33 @@ RUN add-apt-repository ppa:ondrej/php
 
 RUN apt-get update && apt-get install -yq \
     # Install php 7
-    libapache2-mod-php7.1 \
-    php7.1-cli \
-    php7.1-common \
-    php7.1-gd \
-    php7.1-imap \
-    php7.1-intl \
-    php7.1-json \
-    php7.1-mbstring \
-    php7.1-mcrypt \
-    php7.1-mysql \
-    php7.1-opcache \
-    php7.1-readline \
-    php7.1-xml \
-    php7.1-zip \
-    php7.1-curl \
-    php7.1-xml \
-    php7.1-zip \
+    libapache2-mod-php7.4 \
+    php7.4-cli \
+    php7.4-common \
+    php7.4-gd \
+    php7.4-imap \
+    php7.4-intl \
+    php7.4-json \
+    php7.4-mbstring \
+    php7.4-mysql \
+    php7.4-opcache \
+    php7.4-readline \
+    php7.4-xml \
+    php7.4-zip \
+    php7.4-curl \
+    php7.4-xml \
+    php7.4-zip \
     php-imagick \
     build-essential \
     php-xdebug
 
+#    php7.4-mcrypt \
+
 RUN a2enmod rewrite expires headers
 RUN phpenmod imap
+
+# RUN apt -y install libmcrypt-dev
+# RUN pecl install mcrypt-1.0.2
 
 RUN ln -sf /dev/stdout /var/log/apache2/access.log
 RUN ln -sf /dev/stderr /var/log/apache2/error.log
