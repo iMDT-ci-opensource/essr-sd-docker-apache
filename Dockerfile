@@ -37,7 +37,6 @@ RUN apt-get install -yq apache2
 RUN add-apt-repository ppa:ondrej/php
 
 RUN apt-get update && apt-get install -yq \
-    # Install php 7
     libapache2-mod-php7.4 \
     php7.4-cli \
     php7.4-common \
