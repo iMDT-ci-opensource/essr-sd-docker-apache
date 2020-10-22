@@ -69,9 +69,13 @@ RUN ln -sf /dev/stdout /var/log/apache2/access.log
 RUN ln -sf /dev/stderr /var/log/apache2/error.log
 
 EXPOSE 80
+RUN adduser user1000 -u 1000
+
+ENV APACHE_RUN_USER=user1000
+ENV APACHE_RUN_GROUP=user1000
 
 # ======= Startup script =======
-run echo ' \n\
+RUN echo ' \n\
 <VirtualHost *:80>\n\
 	ServerAdmin webmaster@localhost\n\
 	DocumentRoot /var/www/public/\n\
@@ -87,6 +91,8 @@ run echo ' \n\
 RUN echo '#!/bin/bash -e \n \
 rm -f /var/run/apache2/apache2.pid || : \n \
 cd /var/www/ \n \
+cat /etc/apache2/envvars  | grep -v APACHE_RUN_ > /tmp/envvars \n \
+cat /tmp/envvars > /etc/apache2/envvars \n \
 touch storage/logs/laravel.log  \n \
 echo "Starting apache :) \n \n" \n \
 /usr/sbin/apache2ctl -D FOREGROUND \
