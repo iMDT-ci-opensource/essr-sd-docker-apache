@@ -71,7 +71,7 @@ RUN ln -sf /dev/stderr /var/log/apache2/error.log
 EXPOSE 80
 RUN adduser user1000 -u 1000
 RUN groupadd fuse
-RUN usermod -aG fuse wwwadmin
+RUN usermod -aG fuse user1000
 
 ENV APACHE_RUN_USER=user1000
 ENV APACHE_RUN_GROUP=user1000
