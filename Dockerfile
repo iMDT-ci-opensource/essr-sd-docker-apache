@@ -70,6 +70,8 @@ RUN ln -sf /dev/stderr /var/log/apache2/error.log
 
 EXPOSE 80
 RUN adduser user1000 -u 1000
+RUN groupadd fuse
+RUN usermod -aG fuse wwwadmin
 
 ENV APACHE_RUN_USER=user1000
 ENV APACHE_RUN_GROUP=user1000
@@ -93,6 +95,7 @@ mkdir /home/user1000/.ssh/ &> /dev/null || true \n \
 cp -f /var/www/docker-apache-keys/* /home/user1000/.ssh/ \n \
 chown -R user1000 /home/user1000/ \n \
 chmod 600 /home/user1000/.ssh/* \n \
+chown root.fuse /dev/fuse \n \
 rm -f /var/run/apache2/apache2.pid || : \n \
 cd /var/www/ \n \
 cat /etc/apache2/envvars  | grep -v APACHE_RUN_ > /tmp/envvars \n \
