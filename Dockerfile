@@ -57,7 +57,7 @@ RUN apt-get update && apt-get install -yq \
     build-essential \
     php-xdebug
 
-#    php7.4-mcrypt \
+RUN apt-get install -yq sshfs
 
 RUN a2enmod rewrite expires headers
 RUN phpenmod imap
