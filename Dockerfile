@@ -89,9 +89,9 @@ RUN echo ' \n\
 ' > /etc/apache2/sites-available/000-default.conf
 
 RUN echo '#!/bin/bash -e \n \
-mkdir /home/user1000/.ssh/ &> /dev/null || true \
-cp -f /var/www/docker-apache-keys/* /home/user1000/.ssh/ \
-chown -R user1000 /home/user1000/ \
+mkdir /home/user1000/.ssh/ &> /dev/null || true \n \
+cp -f /var/www/docker-apache-keys/* /home/user1000/.ssh/ \n \
+chown -R user1000 /home/user1000/ \n \
 rm -f /var/run/apache2/apache2.pid || : \n \
 cd /var/www/ \n \
 cat /etc/apache2/envvars  | grep -v APACHE_RUN_ > /tmp/envvars \n \
