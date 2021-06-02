@@ -101,6 +101,7 @@ cd /var/www/ \n \
 cat /etc/apache2/envvars  | grep -v APACHE_RUN_ > /tmp/envvars \n \
 cat /tmp/envvars > /etc/apache2/envvars \n \
 touch storage/logs/laravel.log  \n \
+chmod 666 storage/logs/laravel.log  \n \
 echo "Starting apache :) :) \n \n" \n \
 /usr/sbin/apache2ctl -D FOREGROUND \
 ' > /root/start-apache.sh
