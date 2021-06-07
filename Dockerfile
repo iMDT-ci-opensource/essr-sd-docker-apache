@@ -1,4 +1,4 @@
-FROM ubuntu:16.04 as build
+FROM ubuntu:16.04
 
 ENV DEBIAN_FRONTEND noninteractive
 
@@ -107,6 +107,4 @@ echo "Starting apache :) :) \n \n" \n \
 ' > /root/start-apache.sh
 RUN chmod 700 /root/start-apache.sh
 
-FROM scratch
-COPY --from=build / /
 CMD ["/root/start-apache.sh"]
