@@ -95,9 +95,11 @@ chown -R user1000 /home/user1000/ \n \
 chmod 600 /home/user1000/.ssh/* \n \
 chown root.fuse /dev/fuse \n \
 rm -f /var/run/apache2/apache2.pid || : \n \
+chmod rm -f /var/run/apache2/apache2.pid || : \n \
 cd /var/www/ \n \
 cat /etc/apache2/envvars  | grep -v APACHE_RUN_ > /tmp/envvars \n \
 cat /tmp/envvars > /etc/apache2/envvars \n \
+echo "APACHE_RUN_DIR=/var/run/apache2" >> /etc/apache2/envvars \n \
 touch storage/logs/laravel.log  \n \
 chmod 666 storage/logs/laravel.log  \n \
 echo "Starting apache :) :) \n \n" \n \
