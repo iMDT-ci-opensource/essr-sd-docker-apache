@@ -73,6 +73,7 @@ RUN usermod -aG fuse user1000
 
 ENV APACHE_RUN_USER=user1000
 ENV APACHE_RUN_GROUP=user1000
+ENV APACHE_RUN_DIR=/var/run/apache2
 
 # ======= Startup script =======
 RUN echo ' \n\
@@ -99,7 +100,6 @@ chmod rm -f /var/run/apache2/apache2.pid || : \n \
 cd /var/www/ \n \
 cat /etc/apache2/envvars  | grep -v APACHE_RUN_ > /tmp/envvars \n \
 cat /tmp/envvars > /etc/apache2/envvars \n \
-echo "APACHE_RUN_DIR=/var/run/apache2" >> /etc/apache2/envvars \n \
 touch storage/logs/laravel.log  \n \
 chmod 666 storage/logs/laravel.log  \n \
 echo "Starting apache :) :) \n \n" \n \
