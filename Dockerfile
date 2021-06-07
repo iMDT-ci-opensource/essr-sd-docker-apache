@@ -25,9 +25,9 @@ RUN apt-get update && apt-get install -yq \
     mysql-client \
     iputils-ping \
     apt-utils \
-    xpdf \
     imagemagick \
     telnet \
+    poppler-utils \
     netcat
 
 # ======= Apache =======
