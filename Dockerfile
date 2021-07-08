@@ -51,6 +51,7 @@ RUN apt-get update && apt-get install -yq \
     php7.4-curl \
     php7.4-xml \
     php7.4-zip \
+    php7.4-bcmath \
     php-imagick \
     build-essential \
     php-xdebug
@@ -58,7 +59,7 @@ RUN apt-get update && apt-get install -yq \
 RUN apt-get install -yq sshfs
 
 RUN a2enmod rewrite expires headers
-RUN phpenmod imap
+RUN phpenmod imap bcmath
 
 # RUN apt -y install libmcrypt-dev
 # RUN pecl install mcrypt-1.0.2
